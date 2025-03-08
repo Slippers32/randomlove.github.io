@@ -59,18 +59,54 @@
             display: flex;
             gap: 10px;
         }
+
+        /* Медиа-запрос для мобильных устройств */
+        @media (max-width: 600px) {
+            .container {
+                flex-direction: column; /* Элементы располагаются вертикально */
+                gap: 10px; /* Уменьшаем расстояние между элементами */
+            }
+
+            .name-container {
+                flex-direction: column; /* Картинка и имя располагаются вертикально */
+                gap: 10px;
+            }
+
+            .reverse {
+                flex-direction: column; /* Отменяем row-reverse для мобильных */
+            }
+
+            .image {
+                width: 120px; /* Уменьшаем размер картинок */
+                height: 250px;
+            }
+
+            .name {
+                font-size: 18px; /* Уменьшаем размер шрифта */
+            }
+
+            button {
+                padding: 8px 16px; /* Уменьшаем размер кнопки */
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Первый блок: Картинка 1 и Имя 1 -->
         <div class="name-container">
-            <img id="image1" src="placeholder.png" alt="Картинка" class="image">
+            <img id="image1" src="skins/kayodog.png" alt="Картинка" class="image">
             <div class="name" id="name1"></div>
         </div>
+
+        <!-- Плюс -->
         <div class="name">+</div>
-        <div class="name-container reverse">
-            <img id="image2" src="placeholder.png" alt="Картинка" class="image">
+
+        <!-- Второй блок: Имя 2 и Картинка 2 -->
+        <div class="name-container">
             <div class="name" id="name2"></div>
+            <img id="image2" src="skins/kerell22.png" alt="Картинка" class="image">
         </div>
     </div>
 
