@@ -12,7 +12,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #221b33; /* Тёмный фон для звёзд */
+            background-color: #5e1f1f; /* Тёмный фон */
             margin: 0;
             position: relative;
             overflow: hidden;
@@ -24,7 +24,7 @@
             gap: 20px;
             margin-bottom: 20px;
             position: relative;
-            z-index: 1; /* Контент поверх звёзд */
+            z-index: 1; /* Контент поверх сердечек */
         }
 
         .name-container {
@@ -58,17 +58,17 @@
             cursor: pointer;
             margin-top: 20px;
             position: relative;
-            z-index: 1; /* Кнопка поверх звёзд */
+            z-index: 1; /* Кнопка поверх сердечек */
         }
 
         .button-container {
             display: flex;
             gap: 10px;
             position: relative;
-            z-index: 1; /* Контейнер кнопок поверх звёзд */
+            z-index: 1; /* Контейнер кнопок поверх сердечек */
         }
 
-        /* === Звёздный фон === */
+        /* === Сердечки вместо звёзд === */
         .stars {
             position: fixed;
             width: 100%;
@@ -81,13 +81,36 @@
 
         .star {
             position: absolute;
-            background-color: white;
-            border-radius: 50%;
+            width: 20px;
+            height: 20px;
             opacity: 0;
             animation: twinkle linear infinite;
         }
 
-        /* === Анимация мерцания звёзд === */
+        .star::before,
+        .star::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 10px;
+            height: 16px;
+            background-color: #f40000; /* Цвет сердечка */
+            border-radius: 10px 10px 0 0;
+        }
+
+        .star::before {
+            left: 10px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .star::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        /* === Анимация мерцания сердечек === */
         @keyframes twinkle {
             0% { opacity: 0; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.2); }
@@ -140,7 +163,7 @@
     </style>
 </head>
 <body>
-    <!-- Звёздный фон -->
+    <!-- Сердечки вместо звёзд -->
     <div class="stars"></div>
     <!-- Освещение сверху -->
     <div class="spotlight"></div>
@@ -168,7 +191,7 @@
     </div>
 
     <script>
-        // Создание звёздного фона
+        // Создание сердечек
         function createStars() {
             const starsContainer = document.querySelector(".stars");
             const numStars = 100;
@@ -177,8 +200,8 @@
                 let star = document.createElement("div");
                 star.className = "star";
                 let size = Math.random() * 3 + 1;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
+                star.style.width = `${size * 2}px`;
+                star.style.height = `${size * 2}px`;
                 star.style.top = `${Math.random() * 100}vh`;
                 star.style.left = `${Math.random() * 100}vw`;
                 star.style.animationDuration = `${Math.random() * 3 + 2}s`;
